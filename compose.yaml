@@ -1,6 +1,7 @@
 services:
   nginx:
     image: nginx:alpine
+    restart: unless-stopped
     ports:
       - "80:80"
     volumes:
@@ -12,6 +13,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.multistage
+    restart: unless-stopped
     env_file:
       - .env
     expose:
@@ -24,6 +26,7 @@ services:
 
   db:
     image: postgres:17-alpine
+    restart: unless-stopped
     env_file:
       - .env
     environment:
@@ -41,6 +44,7 @@ services:
 
   redis:
     image: redis:8-alpine
+    restart: unless-stopped
     volumes:
       - redis_data:/data
     healthcheck:
