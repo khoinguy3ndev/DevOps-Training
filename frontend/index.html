@@ -1,11 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevOps Training</title>
-</head>
-<body>
-  <p>Hello from S3</p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cloud Training</title>
+  </head>
+  <body>
+    <h1>Cloud Training — Frontend on S3</h1>
+    <p>Backend health: <span id="status">checking…</span></p>
+    <script>
+      // Replace with your ECS public IP/URL after Part 2.4
+      const API_URL = window.API_URL || "http://localhost:3000";
+      fetch(`${API_URL}/health`)
+        .then((r) => r.json())
+        .then((d) => (document.getElementById("status").textContent = JSON.stringify(d)))
+        .catch((e) => (document.getElementById("status").textContent = "error: " + e.message));
+    </script>
+  </body>
 </html>
