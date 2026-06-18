@@ -7,9 +7,10 @@
   <body>
     <h1>Cloud Training — Frontend on S3</h1>
     <p>Backend health: <span id="status">checking…</span></p>
+    <script src="config.js"></script>
     <script>
       // Replace with your ECS public IP/URL after Part 2.4
-      const API_URL = window.API_URL || "http://localhost:3000";
+      const API_URL = window.API_URL || "http://13.48.47.174:3000";
       fetch(`${API_URL}/health`)
         .then((r) => r.json())
         .then((d) => (document.getElementById("status").textContent = JSON.stringify(d)))
